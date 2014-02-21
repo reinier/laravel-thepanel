@@ -7,12 +7,12 @@ class Links extends EloquentBaseModel {
 
 	public function user()
     {
-        return $this->belongsTo('User');
+        return $this->belongsTo('Hidiyo\Thepanel\Accounts\User');
     }
 
     public function votes()
     {
-        return $this->hasMany('Vote');
+        return $this->hasMany('Hidiyo\Thepanel\Votes\Votes','link_id');
     }
 
     // public function scopeBacklog($query)

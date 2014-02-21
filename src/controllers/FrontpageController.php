@@ -2,7 +2,7 @@
 use Hidiyo\Thepanel\Links\LinksInterface;
 use View;
 
-class BacklogController extends BaseController {
+class FrontpageController extends BaseController {
 
 	public function __construct( LinksInterface $links )
     {
@@ -12,6 +12,6 @@ class BacklogController extends BaseController {
 
     public function getIndex()
     {
-		return View::make('thepanel::backlog')->with( 'items' , $this->model->getAllFrontpage() );
+		return View::make('thepanel::frontpage.index')->with( 'items' , $this->model->getAllFrontpage() );
     }
 }

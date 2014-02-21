@@ -6,11 +6,11 @@ class Votes extends EloquentBaseModel {
     
     public function user()
     {
-        return $this->belongsTo('User');
+        return $this->belongsTo('Hidiyo\Thepanel\Accounts\User');
     }
 
     public function link()
     {
-        return $this->belongsTo('Link');
+        return $this->belongsTo('Hidiyo\Thepanel\Links\Links');
     }
 }
