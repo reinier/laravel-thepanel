@@ -1,0 +1,9 @@
+body {
+  padding-top: 75px;
+  background: white;
+  color: #222222; }
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both; }
