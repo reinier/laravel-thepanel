@@ -17,4 +17,9 @@ class LinksRepository extends EloquentBaseRepository implements LinksInterface
     {
         return $this->model->orderBy('created_at','desc')->get();
     }
+
+    public function getAllFrontpage()
+    {
+        $this->model->orderBy('created_at','desc')->get();
+    }
 }
