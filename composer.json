@@ -1,6 +1,8 @@
 {
     "name": "hidiyo/thepanel",
-    "description": "",
+    "description": "Turn your Laravel site into a crowd curated recommendations platform.",
+    "keywords": ["webservice", "links", "curate", "curated links", "php", "laravel"],
+    "homepage": "http://thepanel.io",
     "authors": [
         {
             "name": "Reinier Ladan",
