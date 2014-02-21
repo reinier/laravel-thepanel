@@ -12,6 +12,6 @@ class BacklogController extends BaseController {
 
     public function getIndex()
     {
-        return View::make('thepanel::backlog');
+        return View::make('thepanel::backlog')->with( 'items' , $this->model->getAll() );
     }
 }

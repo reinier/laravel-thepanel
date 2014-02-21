@@ -2,4 +2,7 @@
 
 interface LinksInterface {
 
+    public function getAllByDateAsc();
+    public function getAllByDateDesc();
+
 }

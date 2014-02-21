@@ -8,4 +8,13 @@ class LinksRepository extends EloquentBaseRepository implements LinksInterface
         $this->model = $links;
     }
 
+    public function getAllByDateAsc()
+    {
+        return $this->model->orderBy('created_at','asc')->get();
+    }
+
+    public function getAllByDateDesc()
+    {
+        return $this->model->orderBy('created_at','desc')->get();
+    }
 }
