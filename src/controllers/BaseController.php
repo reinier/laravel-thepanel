@@ -1,5 +1,4 @@
-<?php
-namespace Hidiyo\Thepanel\Controllers;
+<?php namespace Hidiyo\Thepanel\Controllers;
 use Illuminate\Routing\Controller;
 
 abstract class BaseController extends Controller{

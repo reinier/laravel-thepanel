@@ -5,5 +5,5 @@
 @stop
 
 @section('content')
-	<p>It's working pretty well</p>
+	<p>It's working pretty well.</p>
 @stop
