@@ -10,7 +10,6 @@
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
         
-
         <link rel="stylesheet" href="/packages/hidiyo/thepanel/style/thepanel.css?v=3" type="text/css" media="screen" title="no title" charset="utf-8">
 
     </head>
