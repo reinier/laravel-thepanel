@@ -47,10 +47,6 @@
             </div>
         </nav>
         <div id="content" class="container">
-            @section('header-title')
-                <h1>{{ Config::get('site.title'); }}</h1>
-            @show
-
             @yield('content')
         </div> <!-- /container -->
 
