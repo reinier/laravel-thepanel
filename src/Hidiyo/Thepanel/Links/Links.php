@@ -1,6 +1,6 @@
 <?php namespace Hidiyo\Thepanel\Links;
 use Hidiyo\Thepanel\Core\EloquentBaseModel;
-use Config;
+use Config, DateTime;
 
 class Links extends EloquentBaseModel {
 	protected $table = 'links';

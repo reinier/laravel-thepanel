@@ -23,4 +23,16 @@ class LinksRepository extends EloquentBaseRepository implements LinksInterface
     {
         return $this->model->published()->with('user', 'votes')->orderBy('last_vote_date','desc')->get(array('all_the_votes' => DB::raw('*, (SELECT MAX(created_at) FROM votes WHERE links.id = votes.link_id) AS last_vote_date')));
     }
+
+    public function getAllBacklog($sort='')
+    {
+        if($sort == 'votes')
+        {
+            $links = $this->model->backlog()->with('user', 'votes')->orderBy('vote_count','desc')->get(array('count_the_votes' => DB::raw('*, (SELECT COUNT(*) FROM votes WHERE links.id = votes.link_id) AS vote_count')));
+        } else {
+            $links = $this->model->backlog()->orderBy('created_at','desc')->with('user', 'votes')->get();
+        }
+
+        return $links;
+    }
 }

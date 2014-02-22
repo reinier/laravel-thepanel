@@ -12,6 +12,6 @@ class FrontpageController extends BaseController {
 
     public function getIndex()
     {
-		return View::make('thepanel::frontpage.index')->with( 'items' , $this->model->getAllFrontpage() );
+		return View::make('thepanel::frontpage.index')->with( 'items' , $this->model->getAllBacklog() );
     }
 }
