@@ -46,6 +46,7 @@
             </div>
         </nav>
         <div id="content" class="container">
+            @include('thepanel::snippits.messages')
             @yield('content')
         </div> <!-- /container -->
 

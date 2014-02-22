@@ -24,4 +24,9 @@ class EloquentBaseRepository
     {
         return $this->model->all();
     }
+
+    public function getNew( $attributes = array() )
+    {
+        return $this->model->newInstance($attributes);
+    }
 }

@@ -42,7 +42,6 @@ class RemindersController extends BaseController {
 	public function getReset($token = null)
 	{
 		if (is_null($token)) App::abort(404);
-
 		return View::make('thepanel::reminders.reset')->with('token', $token);
 	}
 

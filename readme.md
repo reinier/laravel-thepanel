@@ -14,6 +14,7 @@ Visit [The Panel Trello Board](https://trello.com/b/BdRVX1XM/the-panel) for todo
 
 ## Known issues
 
+- I'm learning a lot from [laravel-bootstrap](https://github.com/davzie/Laravel-Bootstrap), I hope I don't violate the [DBAD public license](https://github.com/davzie/laravel-bootstrap/blob/master/license.md).
 - I'm ([@reinier](https://twitter.com/reinier)) pretty new to this open source stuff, so one of the main reasons to open source this is to get experience with it. 
 
 For more issues and todos, visit [The Panel Trello Board](https://trello.com/b/BdRVX1XM/the-panel)

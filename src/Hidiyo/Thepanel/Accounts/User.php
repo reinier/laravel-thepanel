@@ -8,7 +8,15 @@ class User extends EloquentBaseModel implements LaravelUserInterface, Remindable
 {
 
     protected $table    = 'users';
-    protected $hidden = array('password');
+    protected $hidden   = array('password');
+    protected $fillable = array('name', 'email', 'username', 'password');
+
+    protected $validationRules = [
+        'name' => 'required',
+        'email' => 'required|email|unique:users',
+        'username' => 'required|min:5',
+        'password' => 'required|same:password_again'
+    ];
 
     public function links()
     {
