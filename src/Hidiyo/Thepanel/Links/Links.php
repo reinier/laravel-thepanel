@@ -1,5 +1,6 @@
 <?php namespace Hidiyo\Thepanel\Links;
 use Hidiyo\Thepanel\Core\EloquentBaseModel;
+use Config;
 
 class Links extends EloquentBaseModel {
 	protected $table = 'links';
@@ -15,16 +16,16 @@ class Links extends EloquentBaseModel {
         return $this->hasMany('Hidiyo\Thepanel\Votes\Votes','link_id');
     }
 
-    // public function scopeBacklog($query)
-    // {
-    //     $maxvotes = Config::get('site.maxvotes');
-    //     $old_date = new DateTime('tomorrow -1 week');
-    //     return $query->has('votes', '<', $maxvotes)->where('created_at', '>', $old_date);
-    // }
+    public function scopeBacklog($query)
+    {
+        $maxvotes = Config::get('thepanel::site.maxvotes');
+        $old_date = new DateTime('tomorrow -1 week');
+        return $query->has('votes', '<', $maxvotes)->where('created_at', '>', $old_date);
+    }
 
-    // public function scopePublished($query)
-    // {
-    //     $maxvotes = 3;
-    //     return $query->has('votes', '>=', $maxvotes)->take(25);
-    // }
+    public function scopePublished($query)
+    {
+        $maxvotes = Config::get('thepanel::site.maxvotes');
+        return $query->has('votes', '>=', $maxvotes)->take(25);
+    }
 }
