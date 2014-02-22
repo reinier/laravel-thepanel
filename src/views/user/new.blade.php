@@ -15,7 +15,7 @@
 		@endforeach
 	@endif
 
-	{{ Form::open(array('url' => '/user/register')) }}
+	{{ Form::open(array('url' => '/user/new')) }}
 	<fieldset>
 		<div class="form-group">
 			{{ Form::label('name', 'Your name') . Form::text('name', Input::old('name'), array('class' => 'form-control', 'placeholder' => 'Name')) }}	

@@ -12,32 +12,29 @@ class UserController extends BaseController {
         parent::__construct();
     }
 
-	public function getRegister()
+	public function getNew()
 	{
-		return View::make('thepanel::user.register');
+		return View::make('thepanel::user.new');
 	}
 
-	public function postRegister()
+	public function postNew()
 	{
 	    $record = $this->model->getNew( Input::all() );
         $valid = $record->isValid( Input::all() );
 
         if( !$valid )
         {
-        	Input::flash();
-            return Redirect::to( 'user/register' )->with( 'errors' , $record->getErrors() )->withInput();
+            return Redirect::to( 'user/new' )->with( 'errors' , $record->getErrors() )->withInput();
         }
 
-        $now = date('Y-m-d H:i:s');
-
-        $record->publichash		= Str::random(16); // @TODO make unique
+        $record->publichash		= Str::random(16); // @TODO check DB to make unique
         $record->password 		= Hash::make($record['password']);
         $record->bio 			= 'No information yet';
-		$record->activated		= 0;
-		$record->created_at 	= $now;
-		$record->updated_at 	= $now;
 
         $record->save();
-        return Redirect::to( 'user/register' )->with( 'status' , 'User created' );
+
+        // @TODO send mail with activation link
+
+        return Redirect::to( 'user/new' )->with( 'status' , 'User created' );
 	}
 }
