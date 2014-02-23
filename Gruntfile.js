@@ -5,7 +5,9 @@ module.exports = function(grunt) {
 			dist: {
 		        files: {
 		            './public/style/thepanel.css': './public/style/thepanel.scss',
-		            '../../../public/packages/hidiyo/thepanel/style/thepanel.css': './public/style/thepanel.scss'
+		            '../../../public/packages/hidiyo/thepanel/style/thepanel.css': './public/style/thepanel.scss',
+		            './public/style/frontpage.css': './public/style/frontpage.scss',
+		            '../../../public/packages/hidiyo/thepanel/style/frontpage.css': './public/style/frontpage.scss'
 		        }
 		    }
 	    },
