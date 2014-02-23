@@ -6,7 +6,7 @@
 
 @section('content')
 	
-	<ul>
+	<ul id="published-links" class="clearfix">
 	@foreach ($items as $link)
 		<li class="clearfix">
 			<div class="votes">

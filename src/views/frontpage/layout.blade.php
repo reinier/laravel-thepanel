@@ -14,6 +14,13 @@
     </head>
 
     <body>
+
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+                <a class="{{ Request::is('/') ? 'active' : '' }} brandname" href="/"><strong>The Panel</strong></a> &nbsp;&nbsp;&nbsp; <a href="/frontpage/about">About</a>
+            </div>
+        </nav>
+
         <div id="content" class="container">
             @include('thepanel::snippits.messages')
             @yield('content')
