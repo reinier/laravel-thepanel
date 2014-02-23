@@ -10,7 +10,11 @@
 	@foreach ($items as $link)
 		<li class="clearfix">
 			<div class="votes">
-					{{ $link->voted }}
+				@if (!$link->votes->isEmpty())
+	                @foreach ($link->votes as $vote)
+	                	<img src="http://www.gravatar.com/avatar/{{{ md5(strtolower(trim($vote->user->email))) }}}?s=32&d=identicon" title="{{{ $vote->user->name }}}" class="img-circle">
+	                @endforeach
+	            @endif
 			</div>
 			<a href="{{ $link->url }}" class="the_link">{{ $link->title }}</a>
 			<br />

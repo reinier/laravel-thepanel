@@ -42,29 +42,14 @@ class LinksRepository extends EloquentBaseRepository implements LinksInterface
 
             if($link->votes)
             {
-                $votes          = array();
                 $vote_dates     = array();
                 foreach ($link->votes as $vote) {
-                    
-                    if($link->user->username == $vote->user->username)
-                    {
-                        $size = '48';   
-                    } else {
-                        $size = '32';
-                    }
-
-                    $gravatar = '<img src="http://www.gravatar.com/avatar/'.md5(strtolower(trim($vote->user->email))).'?s='.$size.'&d=identicon" title="'.$vote->user->name.'" class="img-circle">';
-                    $votes[] = $gravatar;
-
                     $vote_dates[] = $vote->created_at;
                 }
             }
 
-            $link->voted = implode(' ', $votes);
-
             $max_vote_date = max($vote_dates);
             $link->last_vote = $max_vote_date->diffForHumans();
-
 
             $links[] = $link;
         }
