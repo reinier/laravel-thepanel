@@ -29,4 +29,21 @@ class EloquentBaseRepository
     {
         return $this->model->newInstance($attributes);
     }
+
+    public function getById($id)
+    {
+        return $this->model->find($id);
+    }
+
+    public function requireById($id)
+    {
+        $model = $this->getById($id);
+
+        if ( ! $model) {
+            throw new EntityNotFoundException;
+        }
+
+        return $model;
+    }
+
 }

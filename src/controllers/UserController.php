@@ -1,7 +1,7 @@
 <?php namespace Hidiyo\Thepanel\Controllers;
 use Hidiyo\Thepanel\Accounts\UserInterface;
 use Illuminate\Support\MessageBag;
-use View, Input, Lang, Redirect, Validator, Str, Hash, Auth;
+use View, Input, Lang, Redirect, Validator, Str, Hash, Auth, User;
 
 class UserController extends BaseController {
 
@@ -25,7 +25,7 @@ class UserController extends BaseController {
 
         if( !$valid )
         {
-            return Redirect::to( 'user/new' )->with( 'errors' , new MessageBag( array( $record->getErrors() ) ) )->withInput();
+            return Redirect::to( 'user/new' )->with( 'errors' , $record->getErrors() )->withInput();
         }
 
         $record->publichash		= Str::random(16); // @TODO check DB to make unique
@@ -43,5 +43,20 @@ class UserController extends BaseController {
     function getEdit()
     {
         return View::make('thepanel::user.edit');
+    }
+
+    function postEdit($id)
+    {
+        if($id != Auth::user()->id)
+        {
+            return Redirect::to( 'user/edit' )->with( 'errors' , new MessageBag( array( 'You can only edit your own account' ) ) )->withInput();
+        }
+
+        $record = $this->model->requireById( $id );
+        $record->name   = Input::get('name');
+        $record->bio    = Input::get('bio');
+        $record->save();
+
+        return Redirect::to( 'user/edit' )->with( 'success' , new MessageBag( array( 'Your account has been updated' ) ) );
     }
 }
