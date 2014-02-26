@@ -22,7 +22,7 @@ class FrontpageController extends BaseController {
 
     public function getIndex()
     {
-		return View::make('thepanel::frontpage.index')->with( 'items' , $this->model->getAllFrontpageFormatted() );
+		return View::make('thepanel::frontpage.index')->with( 'items' , $this->model->getAllFrontpage() );
     }
 
     public function getAbout()
