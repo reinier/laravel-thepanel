@@ -1,7 +1,15 @@
 <?php namespace Hidiyo\Thepanel\Controllers;
+use Illuminate\Support\MessageBag;
 use View, Password, Input, Lang, App, Hash, Redirect;
 
 class RemindersController extends BaseController {
+
+	protected $whitelist = array(
+        'getRemind',
+        'postRemind',
+        'getReset',
+        'postReset'
+    );
 
 	/**
 	 * Display the password reminder view.
@@ -26,10 +34,12 @@ class RemindersController extends BaseController {
 		}))
 		{
 			case Password::INVALID_USER:
-				return Redirect::back()->with('error', Lang::get($response));
+				return Redirect::back()->with('error', new MessageBag( array( Lang::get($response) ) ));
+
 
 			case Password::REMINDER_SENT:
-				return Redirect::back()->with('status', Lang::get($response));
+				return Redirect::back()->with('success', new MessageBag( array(Lang::get($response)) ) );
+
 		}
 	}
 
@@ -67,7 +77,7 @@ class RemindersController extends BaseController {
 			case Password::INVALID_PASSWORD:
 			case Password::INVALID_TOKEN:
 			case Password::INVALID_USER:
-				return Redirect::back()->with('error', Lang::get($response));
+				return Redirect::back()->with('error', new MessageBag( array( Lang::get($response) ) ));
 
 			case Password::PASSWORD_RESET:
 				return Redirect::to('/');

@@ -36,10 +36,10 @@
                             <li class="{{ Request::is('backlog/*')||Request::is('backlog') ? 'active' : '' }}"><a href="/thepanel">@lang('thepanel::backlog.backlog')</a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
-                            <li class="navbar-right"><a href="/user/logout">@lang('thepanel::backlog.logout')</a></li>
+                            <li class="navbar-right"><a href="/frontpage/logout">@lang('thepanel::backlog.logout')</a></li>
                             <li class="{{ Request::is('bookmarklet') ? 'active' : '' }} navbar-right"><a href="/bookmarklet">@lang('thepanel::backlog.yourbookmarklet')</a></li>
                             <li class="{{ Request::is('user/edit') ? 'active' : '' }}"><a href="/user/edit">@lang('thepanel::backlog.settings')</a></li>
-                            <li class="navbar-right {{ Request::is('user/register') ? 'active' : '' }}"><a href="/user/register">@lang('thepanel::backlog.newuser')</a></li>
+                            <li class="navbar-right {{ Request::is('user/new') ? 'active' : '' }}"><a href="/user/new">@lang('thepanel::backlog.newuser')</a></li>
                         </ul>
                     </div><!-- /.navbar-collapse -->
                 </div><!-- /.container-fluid -->

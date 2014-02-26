@@ -1,5 +1,8 @@
 <?php
 
+Route::filter('backlogFilter', 'Hidiyo\Thepanel\Filters\Backlog');
+
+Route::get('/', array('uses' => 'Hidiyo\Thepanel\Controllers\FrontpageController@getIndex'));
 Route::controller('thepanel'	, 'Hidiyo\Thepanel\Controllers\BacklogController');
 Route::controller('frontpage'	, 'Hidiyo\Thepanel\Controllers\FrontpageController');
 Route::controller('password'	, 'Hidiyo\Thepanel\Controllers\RemindersController');

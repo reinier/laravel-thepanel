@@ -1,6 +1,7 @@
 <?php namespace Hidiyo\Thepanel\Controllers;
 use Hidiyo\Thepanel\Accounts\UserInterface;
-use View, Input, Lang, Redirect, Validator, Str, Hash;
+use Illuminate\Support\MessageBag;
+use View, Input, Lang, Redirect, Validator, Str, Hash, Auth;
 
 class UserController extends BaseController {
 
@@ -24,7 +25,7 @@ class UserController extends BaseController {
 
         if( !$valid )
         {
-            return Redirect::to( 'user/new' )->with( 'errors' , $record->getErrors() )->withInput();
+            return Redirect::to( 'user/new' )->with( 'errors' , new MessageBag( array( $record->getErrors() ) ) )->withInput();
         }
 
         $record->publichash		= Str::random(16); // @TODO check DB to make unique
@@ -35,6 +36,12 @@ class UserController extends BaseController {
 
         // @TODO send mail with activation link
 
-        return Redirect::to( 'user/new' )->with( 'status' , 'User created' );
+        return Redirect::to( 'user/new' )->with('success', new MessageBag( array('User created') ) );
+
 	}
+
+    function getEdit()
+    {
+        return View::make('thepanel::user.edit');
+    }
 }
