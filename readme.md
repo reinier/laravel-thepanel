@@ -1,6 +1,6 @@
 # The Panel
 
-**In heavy development at the moment, do not use.**
+**In heavy development at the moment, do not use. I'm creating a Package of the functionality found in this repo: [The Panel](https://github.com/reinier/ThePanel).**
 
 See The Panel in action on [Burrrst](http://burrrst.nl) (mostly dutch).
 
