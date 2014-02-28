@@ -1,7 +1,7 @@
 <?php namespace Hidiyo\Thepanel\Controllers;
 use Hidiyo\Thepanel\Accounts\UserInterface;
 use Illuminate\Support\MessageBag;
-use View, Input, Lang, Redirect, Validator, Hash, Auth, User;
+use View, Input, Lang, Redirect, Validator, Hash, Auth, User, Mail;
 
 class UserController extends BaseController {
 
@@ -32,7 +32,12 @@ class UserController extends BaseController {
 
         $record->save();
 
-        // @TODO send mail with activation link
+        // Mail activation link to this human being
+        $data['hash'] = $record->publichash;
+        Mail::send('thepanel::emails.activate', $data, function($message) use ($record)
+        {
+            $message->to($record->email, $record->name)->subject('Activate your account');
+        });
 
         return Redirect::to( 'user/new' )->with('success', new MessageBag( array('User created') ) );
 
