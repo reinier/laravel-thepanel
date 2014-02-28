@@ -27,6 +27,12 @@ class LinksRepository extends EloquentBaseRepository implements LinksInterface
         return $this->augmentLinks($links);
     }
 
+    public function getLinkByIdWithVotes($id)
+    {
+        // I tried to use ->find($id) here, but it returns the wrong votes…
+        return $this->model->where('id', $id)->with('votes')->first();
+    }
+
     public function augmentLinks($items)
     {
         foreach ($items as $link)
@@ -57,9 +63,14 @@ class LinksRepository extends EloquentBaseRepository implements LinksInterface
                 }
             }
 
-            $max_vote_date = max($vote_dates);
-            $link->last_vote = $max_vote_date->diffForHumans();
-
+            if(is_array($vote_dates) AND !empty($vote_dates))
+            {
+                $max_vote_date = max($vote_dates);
+                $link->last_vote = $max_vote_date->diffForHumans();
+            } else {
+                $link->last_vote = 'now';
+            }
+            
             $link->user_has_already_voted = $user_has_already_voted;
             $links[] = $link;
         }

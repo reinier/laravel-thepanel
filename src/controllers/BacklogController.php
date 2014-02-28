@@ -43,4 +43,33 @@ class BacklogController extends BaseController {
 
 		return Redirect::to( 'thepanel' )->with('success', new MessageBag( array('Link created') ) );
 	}
+
+	public function postVote()
+	{
+		$link_id = Input::get('link_id');
+		$link = $this->links->getLinkByIdWithVotes($link_id);
+
+		$user_has_already_voted = FALSE;
+
+		if($link->votes)
+	    {
+		    foreach ($link->votes as $vote) {
+		    	if(Auth::user()->username == $vote->user->username)
+		    	{
+		    		$user_has_already_voted = TRUE;
+		    	}
+		    }
+		}
+
+		if($user_has_already_voted == TRUE)
+		{
+			return Redirect::to('thepanel')->with( 'errors' , new MessageBag( array('You already have voted on this link!') ) )->withInput();
+		}
+
+		$newVote = $this->votes->getNew();
+		$newVote->user_id = Auth::user()->id;
+		$link->votes()->save($newVote);
+
+		return Redirect::to('thepanel')->with('success', new MessageBag( array('Vote recieved') ) );
+	}
 }

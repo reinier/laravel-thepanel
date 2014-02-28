@@ -48,11 +48,9 @@
 							</div>
 						</td>
 						<td class="vote-cell">
-							{{ Form::open(array('url' => '/backlog/vote')) }}
+							{{ Form::open(array('url' => '/thepanel/vote')) }}
 							<input type="hidden" name="link_id" value="{{ $link->id }}">
-							@if ($link->user_has_already_voted == TRUE)
-								<!-- <button type="submit" class="btn btn-default" disabled="disabled">Voted</button> -->
-							@else
+							@if ($link->user_has_already_voted !== TRUE)
 								<button type="submit" class="btn btn-success">+1</button>
 							@endif
 							{{ Form::close() }}
