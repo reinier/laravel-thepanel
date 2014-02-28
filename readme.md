@@ -19,6 +19,8 @@ php artisan asset:publish hidiyo/thepanel
 
 **!important** After publishing the config and assets edit the following config to setup the first user: `app\config\packages\hidiyo\thepanel\setup.php`
 
+Then you can run the database migration and setup:
+
 ```
 php artisan migrate --package="hidiyo/thepanel"
 php artisan db:seed --class="Hidiyo\Thepanel\Seeds\DatabaseSeeder"
