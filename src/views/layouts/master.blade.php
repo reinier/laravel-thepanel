@@ -37,7 +37,7 @@
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <li class="navbar-right"><a href="/frontpage/logout">@lang('thepanel::backlog.logout')</a></li>
-                            <li class="{{ Request::is('bookmarklet') ? 'active' : '' }} navbar-right"><a href="/bookmarklet">@lang('thepanel::backlog.yourbookmarklet')</a></li>
+                            <!-- <li class="{{ Request::is('bookmarklet') ? 'active' : '' }} navbar-right"><a href="/bookmarklet">@lang('thepanel::backlog.yourbookmarklet')</a></li> -->
                             <li class="{{ Request::is('user/edit') ? 'active' : '' }}"><a href="/user/edit">@lang('thepanel::backlog.settings')</a></li>
                             <li class="navbar-right {{ Request::is('user/new') ? 'active' : '' }}"><a href="/user/new">@lang('thepanel::backlog.newuser')</a></li>
                         </ul>

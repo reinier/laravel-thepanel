@@ -6,7 +6,7 @@
 
 @section('content')
 
-<p class="add-to-backlog"><a href="/thepanel/add">+ @lang('thepanel.addlink')</a></p>
+<p class="add-to-backlog"><a href="/thepanel/add">+ @lang('thepanel::backlog.addlink')</a></p>
 <!-- 	<p class="sort-backlog">
 		<em>@lang('thepanel.sortby'):</em>
 		@if(Request::is('backlog/list/votes'))

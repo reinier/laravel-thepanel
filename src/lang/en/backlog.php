@@ -16,4 +16,5 @@ return array(
 	"votes" => "Votes",
 	"incoming" => "Incoming",
 	"sortby" => "Sort by",
+	"addlink" => "Add link by hand",
 );
