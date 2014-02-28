@@ -5,7 +5,7 @@ use Config, DateTime;
 class Links extends EloquentBaseModel {
 	protected $table = 'links';
 	protected $softDelete = true;
-    protected $fillable = array('title', 'url');
+    protected $fillable = array('title', 'url', 'kind', 'reason');
 
     protected $validationRules = [
         'title' => 'required',
