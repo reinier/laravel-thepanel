@@ -1,7 +1,7 @@
 <?php namespace Hidiyo\Thepanel\Controllers;
 use Hidiyo\Thepanel\Accounts\UserInterface;
 use Illuminate\Support\MessageBag;
-use View, Input, Lang, Redirect, Validator, Str, Hash, Auth, User;
+use View, Input, Lang, Redirect, Validator, Hash, Auth, User;
 
 class UserController extends BaseController {
 
@@ -26,7 +26,7 @@ class UserController extends BaseController {
             return Redirect::to( 'user/new' )->with( 'errors' , $record->getErrors() )->withInput();
         }
 
-        $record->publichash		= Str::random(16); // @TODO check DB to make unique
+        $record->publichash		= str_random(); // @TODO check DB to make unique
         $record->password 		= Hash::make($record['password']);
         $record->bio 			= 'No information yet';
 

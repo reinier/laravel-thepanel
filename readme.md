@@ -8,9 +8,12 @@ See The Panel in action on [Burrrst](http://burrrst.nl) (mostly dutch).
 
 Visit [The Panel Trello Board](https://trello.com/b/BdRVX1XM/the-panel) for todos and issues.
 
-## Setup
+## Setup (WIP)
 
-- Working on it
+```
+php artisan migrate --package="hidiyo/thepanel"
+php artisan db:seed --class="Hidiyo\Thepanel\Seeds\DatabaseSeeder"
+```
 
 ## Known issues
 
