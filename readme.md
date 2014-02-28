@@ -10,6 +10,15 @@ Visit [The Panel Trello Board](https://trello.com/b/BdRVX1XM/the-panel) for todo
 
 ## Setup (WIP)
 
+(When this package is still in the workbench other actions are required: see [Laravel Docs Packages](http://laravel.com/docs/packages))
+
+```
+php artisan config:publish hidiyo/thepanel
+php artisan asset:publish hidiyo/thepanel
+```
+
+**!important** After publishing the config and assets edit the following config to setup the first user: `app\config\packages\hidiyo\thepanel\setup.php`
+
 ```
 php artisan migrate --package="hidiyo/thepanel"
 php artisan db:seed --class="Hidiyo\Thepanel\Seeds\DatabaseSeeder"
