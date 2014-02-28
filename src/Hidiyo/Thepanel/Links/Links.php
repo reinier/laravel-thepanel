@@ -5,6 +5,12 @@ use Config, DateTime;
 class Links extends EloquentBaseModel {
 	protected $table = 'links';
 	protected $softDelete = true;
+    protected $fillable = array('title', 'url');
+
+    protected $validationRules = [
+        'title' => 'required',
+        'url' => 'required'
+    ];
 
 	public function user()
     {

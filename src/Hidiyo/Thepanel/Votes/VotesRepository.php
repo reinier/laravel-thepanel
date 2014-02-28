@@ -3,7 +3,7 @@ use Hidiyo\Thepanel\Core\EloquentBaseRepository;
 
 class VotesRepository extends EloquentBaseRepository implements VotesInterface
 {
-    public function __construct( Links $vote )
+    public function __construct( Votes $votes )
     {
         $this->model = $votes;
     }

@@ -29,15 +29,11 @@ class LinksRepository extends EloquentBaseRepository implements LinksInterface
 
     public function augmentLinks($items)
     {
-        if(empty($items)){
-            return '';
-        }
-
         foreach ($items as $link)
         {
             $date = $link->created_at->diffForHumans();
             $link->date_ago = $date;
-            
+
             /* Move to function */
             $link->domain = parse_url($link->url, PHP_URL_HOST);
             if(substr($link->domain, 0, 4) == 'www.'){
@@ -48,7 +44,7 @@ class LinksRepository extends EloquentBaseRepository implements LinksInterface
             {
                 $vote_dates     = array();
                 $user_has_already_voted = FALSE;
-                
+
                 foreach ($link->votes as $vote) {
                     $vote_dates[] = $vote->created_at;
                     if (Auth::check())
@@ -66,6 +62,10 @@ class LinksRepository extends EloquentBaseRepository implements LinksInterface
 
             $link->user_has_already_voted = $user_has_already_voted;
             $links[] = $link;
+        }
+
+        if(empty($links)){
+            return '';
         }
 
         return $links;

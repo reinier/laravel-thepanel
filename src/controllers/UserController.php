@@ -5,8 +5,6 @@ use View, Input, Lang, Redirect, Validator, Str, Hash, Auth, User;
 
 class UserController extends BaseController {
 
-	protected $validateWithInput = true;
-
     public function __construct( UserInterface $users )
     {
         $this->model = $users;

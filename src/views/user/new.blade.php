@@ -5,11 +5,10 @@
 @stop
 
 @section('content')
-
 	{{ Form::open(array('url' => '/user/new')) }}
 	<fieldset>
 		<div class="form-group">
-			{{ Form::label('name', 'Your name') . Form::text('name', Input::old('name'), array('class' => 'form-control', 'placeholder' => 'Name')) }}	
+			{{ Form::label('name', 'Your name') . Form::text('name', Input::old('name'), array('class' => 'form-control', 'placeholder' => 'Name')) }}
 		</div>
 		<div class="form-group">
 			{{ Form::label('email', 'Your email address') . Form::text('email', Input::old('email'), array('class' => 'form-control', 'placeholder' => 'Email')) }}
