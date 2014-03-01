@@ -51,6 +51,12 @@ class BacklogController extends BaseController {
 			return Redirect::to( 'thepanel/add' )->with( 'errors' , $newLink->getErrors() )->withInput();
 		}
 
+		$check_link = $this->links->getLinkByUrl(Input::get('url'));
+		if(!empty($check_link[0]))
+		{
+			return Redirect::to( 'thepanel' )->with('errors', new MessageBag( array('Link already added by another user.') ) );
+		}
+
 		$newLink->user_id = Auth::user()->id;
 		$newLink->save();
 
