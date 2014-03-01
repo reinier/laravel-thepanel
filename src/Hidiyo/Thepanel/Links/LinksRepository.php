@@ -33,6 +33,13 @@ class LinksRepository extends EloquentBaseRepository implements LinksInterface
         return $this->model->where('id', $id)->with('votes')->first();
     }
 
+    public function getAugmentedLinkByIdWithVotes($id)
+    {
+        $link = $this->getLinkByIdWithVotes($id);
+        $augmentedLink = $this->augmentLinks(array($link));
+        return $augmentedLink[0];
+    }
+
     public function augmentLinks($items)
     {
         foreach ($items as $link)
@@ -70,7 +77,7 @@ class LinksRepository extends EloquentBaseRepository implements LinksInterface
             } else {
                 $link->last_vote = 'now';
             }
-            
+
             $link->user_has_already_voted = $user_has_already_voted;
             $links[] = $link;
         }

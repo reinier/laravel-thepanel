@@ -11,7 +11,8 @@ class FrontpageController extends BaseController {
         'getLogin',
         'getLogout',
         'postLogin',
-        'getAbout'
+        'getAbout',
+		'getDetail'
     );
 
 	public function __construct( LinksInterface $links )
@@ -28,6 +29,12 @@ class FrontpageController extends BaseController {
     public function getAbout()
     {
 		return View::make('thepanel::frontpage.about');
+    }
+
+    public function getDetail($link_id)
+    {
+		$link = $this->model->getAugmentedLinkByIdWithVotes($link_id);
+        return View::make('thepanel::frontpage.detail')->with('link',$link);
     }
 
     public function getLogin()
