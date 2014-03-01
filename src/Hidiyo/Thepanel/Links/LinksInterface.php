@@ -6,4 +6,5 @@ interface LinksInterface {
     public function getAllBacklog($sort='');
     public function getLinkByIdWithVotes($id);
     public function getAugmentedLinkByIdWithVotes($id);
+    public function getLinkByUrl($url);
 }

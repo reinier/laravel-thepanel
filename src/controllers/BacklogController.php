@@ -20,7 +20,25 @@ class BacklogController extends BaseController {
 
 	public function getAdd()
 	{
-		return View::make('thepanel::backlog.add');
+		if(Input::get('bookmarklet') == 'true')
+		{
+			$bookmarkletInput['title'] 	= htmlspecialchars(Input::get('title'));
+			$bookmarkletInput['url'] 	= Input::get('url');
+
+			$check_link = $this->links->getLinkByUrl($bookmarkletInput['url']);
+			if(!empty($check_link[0]))
+			{
+				return Redirect::to( 'thepanel' )->with('errors', new MessageBag( array('Link already added by another user.') ) );
+			}
+
+		} else {
+			$bookmarkletInput = array(
+				'title' => '',
+				'url' => ''
+			);
+		}
+
+		return View::make('thepanel::backlog.add')->with('bookmarkletInput', $bookmarkletInput);
 	}
 
 	public function postAdd()

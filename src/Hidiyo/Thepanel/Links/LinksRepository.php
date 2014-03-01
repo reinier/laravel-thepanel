@@ -40,6 +40,11 @@ class LinksRepository extends EloquentBaseRepository implements LinksInterface
         return $augmentedLink[0];
     }
 
+    public function getLinkByUrl($url)
+    {
+        return $this->model->where('url', 'LIKE', $url)->get();
+    }
+
     public function augmentLinks($items)
     {
         foreach ($items as $link)
